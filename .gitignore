@@ -1,8 +1,8 @@
 .gradle
-build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+/build/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -46,3 +46,8 @@ bin/
 git-push
 .cursor/
 burp/
+zap-addon/build/classes/
+zap-addon/build/resources/
+zap-addon/build/tmp/
+zap-addon/build/reports/
+zap-addon/build/generated/
