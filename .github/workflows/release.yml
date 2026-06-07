@@ -1,0 +1,34 @@
+name: Build and Release Zap-o-Llama
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Grant execute permission for Gradle
+        run: chmod +x gradlew
+
+      - name: Build Add-on
+        run: ./gradlew buildZapAddOn
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/zapAddOn/*.zap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
