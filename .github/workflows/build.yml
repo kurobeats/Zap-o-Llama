@@ -3,6 +3,7 @@ name: Build Project
 on:
   push:
     branches: [ "main" ]
+    tags: [ "v*" ]
   pull_request:
 
 jobs:
@@ -20,3 +21,23 @@ jobs:
 
       - name: Build
         run: ./gradlew build --no-daemon
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-ollama
+          path: zap-addon/build/libs/*.jar
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: zap-ollama
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.jar"
