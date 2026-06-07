@@ -18,8 +18,5 @@ jobs:
           sdk install java 21.0.5-tem
           sdk use java 21.0.5-tem
 
-      - name: Unalias find
-        run: unalias find 2>/dev/null || true
-
       - name: Build
         run: ./gradlew build --no-daemon
