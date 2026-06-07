@@ -1,0 +1,17 @@
+<zapaddon>
+    <name>Ollama AI Assistant</name>
+    <version>1.0.0</version>
+    <semver>1.0.0</semver>
+    <description>Integrates local Ollama LLMs into ZAP for AI-assisted security analysis, alert enrichment, and session handling.</description>
+    <author>Burp-Ollama Port</author>
+    <url>https://github.com/example/zap-ollama</url>
+    <changes>Initial release: ported from Burp-Ollama</changes>
+    <dependencies>
+        <javaversion>11</javaversion>
+    </dependencies>
+    <extension>org.zaproxy.zap.extension.ollama.ExtensionOllama</extension>
+    <classnames>
+        <classname>org.zaproxy.zap.extension.ollama.ExtensionOllama</classname>
+    </classnames>
+    <bundled>false</bundled>
+</zapaddon>
