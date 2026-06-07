@@ -10,6 +10,11 @@ AI-powered security testing for **OWASP ZAP** using local Ollama models. All dat
 
 ---
 
+## Release
+The latest build can be found [here](https://github.com/kurobeats/Zap-o-Llama/tree/main/zap-addon/build/libs)
+
+---
+
 ## Features
 
 - **Ask Ollama** — send HTTP messages to Ollama for analysis via the options panel
