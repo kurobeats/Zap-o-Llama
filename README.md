@@ -12,7 +12,6 @@ Two forms are provided:
 
 | Form | Location | Use case |
 |------|----------|----------|
-| **Python scripts** | `zap-scripts/` | Quick setup, no compilation needed |
 | **Java add-on** | `zap-addon/` | Full integration, options panel, passive scanning |
 
 ---
@@ -40,28 +39,7 @@ Two forms are provided:
 
 - [Ollama](https://ollama.com) installed and running
 - At least one model pulled: `ollama pull llama3.2:3b`
-- **Python scripts:** ZAP with Jython support
 - **Java add-on:** ZAP 2.15+, Java 11+
-
----
-
-## Python Scripts
-
-Three self-contained scripts in `zap-scripts/`:
-
-| Script | ZAP Script Type | What it does |
-|--------|-----------------|--------------|
-| `ollama_common.py` | Shared module | HTTP client — chat, streaming, list models, health check |
-| `ask_ollama_standalone.py` | Standalone | Opens a dialog to send arbitrary queries to Ollama |
-| `alert_enricher.py` | Alert Filter | Enriches every new alert with AI false-positive assessment and remediation advice |
-| `session_helper.py` | HTTP Sender | Monitors traffic for login pages, session cookies, and 401/403 expiry |
-
-### Setup
-
-1. Copy all `.py` files into ZAP's scripts folder
-2. In ZAP: **Scripts panel → Load** each script
-3. Edit the `OLLAMA_URL` and `MODEL` variables at the top of each script
-4. Ensure Ollama is running (`ollama serve`)
 
 ---
 
@@ -128,7 +106,6 @@ zap-addon/src/main/java/org/zaproxy/zap/extension/ollama/
 ## Known Limitations
 
 - Alert enrichment is asynchronous — results may not appear instantly
-- Python scripts use Jython 2.7 (no `requests` library — uses `urllib2`)
 - No WebSocket message support in the ZAP port
 - No Intruder/Fuzzer payload generator (requires separate ZAP Fuzzer add-on)
 
